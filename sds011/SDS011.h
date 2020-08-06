@@ -10,8 +10,8 @@ class SDS011 : public Device {
 	private:
 		uint8_t rx_pin;
 		
-		uint16_t PM25 = 0;
-		uint16_t PM10 = 0;
+		double PM25 = 0;
+		double PM10 = 0;
 
 
 	public:

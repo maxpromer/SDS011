@@ -96,9 +96,9 @@ void SDS011::process(Driver *drv) {
 				}
 			} else if (state == 3) { // Check-sum
 				if (c == sum) {
-					this->PM25 = ((uint16_t)(pm_data[1]) << 16) | pm_data[0];
-					this->PM10 = ((uint16_t)(pm_data[3]) << 16) | pm_data[2];
-					ESP_LOGI("SDS011", "PM2.5: %d\tPM10: %d\n", this->PM25, this->PM10);
+					this->PM25 = (uint16_t)(((uint16_t)(pm_data[1]) << 16) | pm_data[0]) / 10.0;
+					this->PM10 = (uint16_t)(((uint16_t)(pm_data[3]) << 16) | pm_data[2]) / 10.0;
+					ESP_LOGI("SDS011", "PM2.5: %f\tPM10: %f\n", this->PM25, this->PM10);
 				} else {
 					ESP_LOGI("SDS011", "SUM error");
 				}
